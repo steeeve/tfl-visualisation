@@ -29,6 +29,6 @@
     include: 'main',
     insertRequire: ['main'],
     out: './main.min.js',
-    optimize: 'none', // for debugging
+    // optimize: 'none', // for debugging
     wrap: true
 })
