@@ -1,25 +1,5 @@
-html,
-body {
-  margin: 0;
-  padding: 0;
-  background: #2841a6;
-}
-.clock.face {
-  fill: #0090e7;
-}
-.clock.spoke {
-  stroke: #ffffff;
-  opacity: 0.25;
-}
-.clock.ring {
-  fill: #ffffff;
-  /* #0090e7 */
-
-  opacity: 0.10;
-}
-.journey {
-  opacity: 0.95;
-  fill: #ffffff;
-  /* 2841a6 */
-
-}
+html,body{margin:0;padding:0;background:#2841a6;}
+.clock.face{fill:#0090e7;}
+.clock.spoke{stroke:#ffffff;opacity:0.25;}
+.clock.ring{fill:#ffffff;opacity:0.10;}
+.journey{opacity:0.95;fill:#ffffff;}
