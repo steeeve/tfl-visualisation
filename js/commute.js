@@ -1,72 +1,58 @@
 /*global define*/
 
 define(function( require ) {
-  'use strict';
+    'use strict';
 
-  var Backbone = require( 'backbone' ),
-      _ = require( 'underscore' ),
-      d3 = require( 'd3' ),
-      moment = require( 'moment' );
+    var Backbone = require( 'backbone' ),
+            _ = require( 'underscore' ),
+            d3 = require( 'd3' ),
+            moment = require( 'moment' );
 
-  var commute;
+    var commute;
 
-  commute = function( raw ) {
-    // Process data
-    var data;
+    commute = function( raw ) {
+        // Process data
+        var data;
 
-    data = [];
+        data = [];
 
-    for( var i in raw ) {
-      var r,
-          d,
-          sT,
-          eT,
-          journeyAction,
-          from,
-          to,
-          duration,
-          start,
-          end,
-          journey;
+        for( var i = 0; i < raw.length; i++) {
+            var r,
+                    d,
+                    sT,
+                    eT,
+                    duration,
+                    start,
+                    end;
 
-      r = raw[i];
+            r = raw[i];
 
-      journeyAction = r['Journey/Action'];
+            d = r[ 'Date' ];
+            sT = r[ 'Start Time' ];
+            eT = r[ 'End Time' ];
 
-      d = r[ 'Date' ];
-      sT = r[ 'Start Time' ];
-      eT = r[ 'End Time' ];
+            start = moment( d + ' ' + sT , 'DD-MMM-YYYY HH:mm' );
+            end = moment( d + ' ' + eT , 'DD-MMM-YYYY HH:mm' );
 
-      if(
-        !journeyAction.match(/bus journey|topped up|season ticket/ig) &&
-        eT !== ''
-      ) {
-        journey = journeyAction.split( ' to ' );
+            if( end.diff( start ) < 0 ) {
 
-        start = moment( d + ' ' + sT , 'DD-MMM-YYYY HH:mm' );
-        end = moment( d + ' ' + eT , 'DD-MMM-YYYY HH:mm' );
+                // Bump end date up by a day!
+                end.add( 'days', 1 );
+            }
 
-        if( end.diff( start ) < 0 ) {
+            duration = end.diff( start ) / 60000;
 
-            // Bump end date up by a day!
-            end.add( 'days', 1 );
+            data.push({
+                start: start,
+                end: end,
+                duration: duration
+            });
+
         }
 
-        duration = end.diff( start ) / 60000;
+        return data;
+    };
 
-        data.push({
-          from: journey[ 0 ],
-          to: journey[ 1 ],
-          start: start,
-          end: end,
-          duration: duration
-        });
-      }
-    }
-
-    return data;
-  };
-
-  return commute;
+    return commute;
 
 });
