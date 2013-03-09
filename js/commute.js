@@ -42,11 +42,15 @@ define(function( require ) {
 
             duration = end.diff( start ) / 60000;
 
-            data.push({
-                start: start,
-                end: end,
-                duration: duration
-            });
+            if( duration < 60 ) {
+
+                data.push({
+                    start: start,
+                    end: end,
+                    duration: duration
+                });
+
+            }
 
         }
 
