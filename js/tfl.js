@@ -10,12 +10,17 @@ define(function( require ) {
 
   Tfl = Backbone.View.extend({
     initialize: function() {
-      var graph;
+      var graph,
+        width,
+        height;
+
+      width = $(window).width();
+      height = $(window).height();
 
       graph = new ClockView({
-        width: 800,
-        height: 600,
-        padding: 25
+        width: width,
+        height: height,
+        padding: 50
       });
 
       this.$el.append( graph.el );
