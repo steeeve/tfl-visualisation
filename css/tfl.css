@@ -1,5 +1,7 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:600);
 html,body{margin:0;padding:0;background:#2841a6;}
 .clock.face{fill:#0090e7;}
-.clock.spoke{stroke:#ffffff;opacity:0.25;}
-.clock.ring{fill:#ffffff;opacity:0.10;}
-.journey{opacity:0.95;fill:#ffffff;}
+.clock.spoke{stroke:#ffffff;fill:none;opacity:0.3;}
+.journey circle{opacity:0.4;fill:#ffffff;}
+.journey text{cursor:default;font-family:"Open Sans",sans-serif;font-weight:600;font-size:16px;fill:#282828;display:none;opacity:0;text-anchor:middle;}
+.journey.active text{display:block;opacity:1;}
