@@ -2,27 +2,48 @@
 @light2: #0090e7;
 @dark1: #000;
 @dark2: #2841a6;
+@dark3: rgb(40,40,40);
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:600);
 
 html, body {
   margin:0; padding:0;
   background: @dark2;
 }
 
-.clock.face {
-  fill: @light2;
-}
-
-.clock.spoke {
-  stroke: @light1;
-  opacity: 0.25;
-}
-
-.clock.ring {
-  fill: @light1; /* #0090e7 */
-  opacity: 0.10;
+.clock {
+    &.face {
+        fill: @light2;
+    }
+    &.spoke {
+        stroke: @light1;
+        fill: none;
+        opacity: 0.3;
+    }
 }
 
 .journey {
-  opacity: 0.95;
-  fill: @light1; /* 2841a6 */
+
+    circle {
+        opacity: 0.4;
+        fill: @light1; /* 2841a6 */
+    }
+
+    text {
+        cursor: default;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        fill: @dark3;
+        display: none;
+        opacity: 0;
+        text-anchor: middle;
+    }
+
+    &.active {
+        text {
+            display: block;
+            opacity: 1;
+        }
+    }
 }

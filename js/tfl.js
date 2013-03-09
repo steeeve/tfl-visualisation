@@ -13,9 +13,9 @@ define(function( require ) {
       var graph;
 
       graph = new ClockView({
-        width: 1000,
-        height: 700,
-        padding: 50
+        width: 800,
+        height: 600,
+        padding: 25
       });
 
       this.$el.append( graph.el );
